@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="jp">
+    <head>
+        <meta charset="UTF-8">
+        <title>show Prototype</title>
+        <style>
+            body {
+                position: relative;
+                height: 400px;
+            }
+            div.base {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform : translate(-50%,-50%);
+                transform : translate(-50%,-50%);
+                display: block;
+                /* text-align: center; */
+            }
+            .btn-flat-simple {
+                position: relative;
+                display: inline-block;
+                font-weight: bold;
+                padding: 0.25em 0.5em;
+                text-decoration: none;
+                color: #f19591;
+                background: #ECECEC;
+                transition: .4s;
+            }
+
+            .btn-flat-simple:hover {
+                background: #f19591;
+                color: white;
+            }
+            .btn-flat-simple2 {
+                position: relative;
+                display: inline-block;
+                font-weight: bold;
+                padding: 0.25em 0.5em;
+                text-decoration: none;
+                color: #00BCD4;
+                background: #ECECEC;
+                transition: .4s;
+            }
+
+            .btn-flat-simple2:hover {
+                background: #00bcd4;
+                color: white;
+            }
+
+            ul {
+                list-style: none;
+                margin: 20px;
+            }
+            li {
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="base">
+            <ul>
+                <li><a href="./activityNet12_prototypes.html" class="btn-flat-simple">
+                <font size="-1">▶</font> Prototype trained on ActivityNet1.2 before cleanning
+                </a></li>
+
+                <li><a href="./labeled_prototype_activityNet12.html" class="btn-flat-simple">
+                    <font size="-1">★</font> Prototype judged to be noise
+                </a></li>
+
+                <li><a href="./cleaned_activityNet12_prototypes.html" class="btn-flat-simple">
+                <font size="-1">▶</font> Prototype trained on ActivityNet1.2 after cleanning
+                </a></li>
+            </ul>
+
+            <ul>
+                <li><a href="./thumos14_prototypes.html" class="btn-flat-simple2">
+                    <font size="-1">▶</font> Prototype trained on THUMOS14 before cleanning
+                </a></li>
+
+                <li><a href="./labeled_prototype_thumos14.html" class="btn-flat-simple2">
+                    <font size="-1">★</font> Prototype judged to be noise
+                </a></li>
+
+                <li><a href="./cleaned_thumos14_prototypes.html" class="btn-flat-simple2">
+                    <font size="-1">▶</font> Prototype trained on THUMOS14 after cleanning
+                </a></li>
+            </div>
+        </div>
+    </body>
+</html>

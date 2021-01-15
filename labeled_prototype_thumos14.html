@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<meta charset="UTF-8">
+<title>Visualize Prototypes</title>
+    <style>
+    .area {
+        width: 100%;
+        display: flex;
+        padding: 0 0 10px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        box-shadow: 0 0 5px rgba(0,0,0,.1);
+    }
+    .tab-switch {
+        display: none;
+        background: white;
+        
+        border-bottom: solid 5px white;
+    }
+    .tab_class {
+        min-width: 200px;
+        height: 50px;
+        background-color: white;
+        opacity:0.5;
+        cursor:pointer; 
+        line-height: 50px;
+        font-size: 20px;
+        text-align: center;
+        display: block;
+        float: left;
+        order: -1;
+    }
+    .content_class {
+        display: none;
+        width: 100%;
+    }
+
+    .tab-switch:hover + .tab_class {
+        background-color: rgba(108,53,36,0.1);
+    }
+
+    .tab-switch:checked + .tab_class {
+        border-bottom: solid 5px chocolate;
+        opacity:1.0;
+        color: chocolate;
+    }
+    
+
+    
+    .tab-switch:checked + .tab_class + .content_class {
+        display: block;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+    }
+
+    .gallery{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        padding-left: 0px;
+    }
+    .gallery li {
+        width: 160px;
+        padding: 5px;
+        box-sizing:border-box;
+    }
+    .gallery li img {
+        max-width:100%;
+        height: auto; 
+    }
+
+    </style>
+</head>
+    <body>
+        <div class="area">
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab0" onclick="getHtml('pages_labeled_prototype_thumos14/BaseballPitch.html','BaseballPitch')">
+            <label class="tab_class" for="tab0">BaseballPitch</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab1" onclick="getHtml('pages_labeled_prototype_thumos14/BasketballDunk.html','BasketballDunk')">
+            <label class="tab_class" for="tab1">BasketballDunk</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab2" onclick="getHtml('pages_labeled_prototype_thumos14/Billiards.html','Billiards')">
+            <label class="tab_class" for="tab2">Billiards</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab3" onclick="getHtml('pages_labeled_prototype_thumos14/CleanAndJerk.html','CleanAndJerk')">
+            <label class="tab_class" for="tab3">CleanAndJerk</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab4" onclick="getHtml('pages_labeled_prototype_thumos14/CliffDiving.html','CliffDiving')">
+            <label class="tab_class" for="tab4">CliffDiving</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab5" onclick="getHtml('pages_labeled_prototype_thumos14/CricketBowling.html','CricketBowling')">
+            <label class="tab_class" for="tab5">CricketBowling</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab6" onclick="getHtml('pages_labeled_prototype_thumos14/CricketShot.html','CricketShot')">
+            <label class="tab_class" for="tab6">CricketShot</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab7" onclick="getHtml('pages_labeled_prototype_thumos14/Diving.html','Diving')">
+            <label class="tab_class" for="tab7">Diving</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab8" onclick="getHtml('pages_labeled_prototype_thumos14/FrisbeeCatch.html','FrisbeeCatch')">
+            <label class="tab_class" for="tab8">FrisbeeCatch</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab9" onclick="getHtml('pages_labeled_prototype_thumos14/GolfSwing.html','GolfSwing')">
+            <label class="tab_class" for="tab9">GolfSwing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab10" onclick="getHtml('pages_labeled_prototype_thumos14/HammerThrow.html','HammerThrow')">
+            <label class="tab_class" for="tab10">HammerThrow</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab11" onclick="getHtml('pages_labeled_prototype_thumos14/HighJump.html','HighJump')">
+            <label class="tab_class" for="tab11">HighJump</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab12" onclick="getHtml('pages_labeled_prototype_thumos14/JavelinThrow.html','JavelinThrow')">
+            <label class="tab_class" for="tab12">JavelinThrow</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab13" onclick="getHtml('pages_labeled_prototype_thumos14/LongJump.html','LongJump')">
+            <label class="tab_class" for="tab13">LongJump</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab14" onclick="getHtml('pages_labeled_prototype_thumos14/PoleVault.html','PoleVault')">
+            <label class="tab_class" for="tab14">PoleVault</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab15" onclick="getHtml('pages_labeled_prototype_thumos14/Shotput.html','Shotput')">
+            <label class="tab_class" for="tab15">Shotput</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab16" onclick="getHtml('pages_labeled_prototype_thumos14/SoccerPenalty.html','SoccerPenalty')">
+            <label class="tab_class" for="tab16">SoccerPenalty</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab17" onclick="getHtml('pages_labeled_prototype_thumos14/TennisSwing.html','TennisSwing')">
+            <label class="tab_class" for="tab17">TennisSwing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab18" onclick="getHtml('pages_labeled_prototype_thumos14/ThrowDiscus.html','ThrowDiscus')">
+            <label class="tab_class" for="tab18">ThrowDiscus</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab19" onclick="getHtml('pages_labeled_prototype_thumos14/VolleyballSpiking.html','VolleyballSpiking')">
+            <label class="tab_class" for="tab19">VolleyballSpiking</label>
+            
+        </div>
+        
+        <div class="content_class" id="BaseballPitch"></div>
+        
+        <div class="content_class" id="BasketballDunk"></div>
+        
+        <div class="content_class" id="Billiards"></div>
+        
+        <div class="content_class" id="CleanAndJerk"></div>
+        
+        <div class="content_class" id="CliffDiving"></div>
+        
+        <div class="content_class" id="CricketBowling"></div>
+        
+        <div class="content_class" id="CricketShot"></div>
+        
+        <div class="content_class" id="Diving"></div>
+        
+        <div class="content_class" id="FrisbeeCatch"></div>
+        
+        <div class="content_class" id="GolfSwing"></div>
+        
+        <div class="content_class" id="HammerThrow"></div>
+        
+        <div class="content_class" id="HighJump"></div>
+        
+        <div class="content_class" id="JavelinThrow"></div>
+        
+        <div class="content_class" id="LongJump"></div>
+        
+        <div class="content_class" id="PoleVault"></div>
+        
+        <div class="content_class" id="Shotput"></div>
+        
+        <div class="content_class" id="SoccerPenalty"></div>
+        
+        <div class="content_class" id="TennisSwing"></div>
+        
+        <div class="content_class" id="ThrowDiscus"></div>
+        
+        <div class="content_class" id="VolleyballSpiking"></div>
+        
+        <script>
+            function　getHtml(str1, str2) {
+              var elements = document.getElementsByClassName('content_class');
+              for(i=0;i<elements.length;i++){
+                elements[i].style.display = 'none';
+              }
+              var xhr = new XMLHttpRequest(),
+              method = "GET",
+              url = str1;//読み込まれるHTMLを指定
+              var box=document.getElementById(str2);//読み込みたい位置を指定
+              box.style.display = 'block';
+            
+              xhr.open(method, url, true);
+              xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                  var restxt=xhr.responseText;//String型で取得
+                  box.innerHTML=restxt;//完了
+                }
+              };
+              xhr.send();
+              
+            };
+        </script>
+    </body>
+</html>

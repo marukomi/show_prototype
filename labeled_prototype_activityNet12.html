@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<meta charset="UTF-8">
+<title>Visualize Prototypes</title>
+    <style>
+    .area {
+        width: 100%;
+        display: flex;
+        padding: 0 0 10px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        box-shadow: 0 0 5px rgba(0,0,0,.1);
+    }
+    .tab-switch {
+        display: none;
+        background: white;
+        
+        border-bottom: solid 5px white;
+    }
+    .tab_class {
+        min-width: 200px;
+        height: 50px;
+        background-color: white;
+        opacity:0.5;
+        cursor:pointer; 
+        line-height: 50px;
+        font-size: 20px;
+        text-align: center;
+        display: block;
+        float: left;
+        order: -1;
+    }
+    .content_class {
+        display: none;
+        width: 100%;
+    }
+
+    .tab-switch:hover + .tab_class {
+        background-color: rgba(108,53,36,0.1);
+    }
+
+    .tab-switch:checked + .tab_class {
+        border-bottom: solid 5px chocolate;
+        opacity:1.0;
+        color: chocolate;
+    }
+    
+
+    
+    .tab-switch:checked + .tab_class + .content_class {
+        display: block;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+    }
+
+    .gallery{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        padding-left: 0px;
+    }
+    .gallery li {
+        width: 160px;
+        padding: 5px;
+        box-sizing:border-box;
+    }
+    .gallery li img {
+        max-width:100%;
+        height: auto; 
+    }
+
+    </style>
+</head>
+    <body>
+        <div class="area">
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab0" onclick="getHtml('pages_labeled_prototype_activityNet12/Archery.html','Archery')">
+            <label class="tab_class" for="tab0">Archery</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab1" onclick="getHtml('pages_labeled_prototype_activityNet12/Ballet.html','Ballet')">
+            <label class="tab_class" for="tab1">Ballet</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab2" onclick="getHtml('pages_labeled_prototype_activityNet12/Bathing dog.html','Bathing dog')">
+            <label class="tab_class" for="tab2">Bathing dog</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab3" onclick="getHtml('pages_labeled_prototype_activityNet12/Belly dance.html','Belly dance')">
+            <label class="tab_class" for="tab3">Belly dance</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab4" onclick="getHtml('pages_labeled_prototype_activityNet12/Breakdancing.html','Breakdancing')">
+            <label class="tab_class" for="tab4">Breakdancing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab5" onclick="getHtml('pages_labeled_prototype_activityNet12/Brushing hair.html','Brushing hair')">
+            <label class="tab_class" for="tab5">Brushing hair</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab6" onclick="getHtml('pages_labeled_prototype_activityNet12/Brushing teeth.html','Brushing teeth')">
+            <label class="tab_class" for="tab6">Brushing teeth</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab7" onclick="getHtml('pages_labeled_prototype_activityNet12/Bungee jumping.html','Bungee jumping')">
+            <label class="tab_class" for="tab7">Bungee jumping</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab8" onclick="getHtml('pages_labeled_prototype_activityNet12/Cheerleading.html','Cheerleading')">
+            <label class="tab_class" for="tab8">Cheerleading</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab9" onclick="getHtml('pages_labeled_prototype_activityNet12/Chopping wood.html','Chopping wood')">
+            <label class="tab_class" for="tab9">Chopping wood</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab10" onclick="getHtml('pages_labeled_prototype_activityNet12/Clean and jerk.html','Clean and jerk')">
+            <label class="tab_class" for="tab10">Clean and jerk</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab11" onclick="getHtml('pages_labeled_prototype_activityNet12/Cleaning shoes.html','Cleaning shoes')">
+            <label class="tab_class" for="tab11">Cleaning shoes</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab12" onclick="getHtml('pages_labeled_prototype_activityNet12/Cleaning windows.html','Cleaning windows')">
+            <label class="tab_class" for="tab12">Cleaning windows</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab13" onclick="getHtml('pages_labeled_prototype_activityNet12/Cricket.html','Cricket')">
+            <label class="tab_class" for="tab13">Cricket</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab14" onclick="getHtml('pages_labeled_prototype_activityNet12/Cumbia.html','Cumbia')">
+            <label class="tab_class" for="tab14">Cumbia</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab15" onclick="getHtml('pages_labeled_prototype_activityNet12/Discus throw.html','Discus throw')">
+            <label class="tab_class" for="tab15">Discus throw</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab16" onclick="getHtml('pages_labeled_prototype_activityNet12/Dodgeball.html','Dodgeball')">
+            <label class="tab_class" for="tab16">Dodgeball</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab17" onclick="getHtml('pages_labeled_prototype_activityNet12/Doing karate.html','Doing karate')">
+            <label class="tab_class" for="tab17">Doing karate</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab18" onclick="getHtml('pages_labeled_prototype_activityNet12/Doing kickboxing.html','Doing kickboxing')">
+            <label class="tab_class" for="tab18">Doing kickboxing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab19" onclick="getHtml('pages_labeled_prototype_activityNet12/Doing motocross.html','Doing motocross')">
+            <label class="tab_class" for="tab19">Doing motocross</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab20" onclick="getHtml('pages_labeled_prototype_activityNet12/Doing nails.html','Doing nails')">
+            <label class="tab_class" for="tab20">Doing nails</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab21" onclick="getHtml('pages_labeled_prototype_activityNet12/Doing step aerobics.html','Doing step aerobics')">
+            <label class="tab_class" for="tab21">Doing step aerobics</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab22" onclick="getHtml('pages_labeled_prototype_activityNet12/Drinking beer.html','Drinking beer')">
+            <label class="tab_class" for="tab22">Drinking beer</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab23" onclick="getHtml('pages_labeled_prototype_activityNet12/Drinking coffee.html','Drinking coffee')">
+            <label class="tab_class" for="tab23">Drinking coffee</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab24" onclick="getHtml('pages_labeled_prototype_activityNet12/Fixing bicycle.html','Fixing bicycle')">
+            <label class="tab_class" for="tab24">Fixing bicycle</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab25" onclick="getHtml('pages_labeled_prototype_activityNet12/Getting a haircut.html','Getting a haircut')">
+            <label class="tab_class" for="tab25">Getting a haircut</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab26" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing flauta.html','Playing flauta')">
+            <label class="tab_class" for="tab26">Playing flauta</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab27" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing guitarra.html','Playing guitarra')">
+            <label class="tab_class" for="tab27">Playing guitarra</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab28" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing harmonica.html','Playing harmonica')">
+            <label class="tab_class" for="tab28">Playing harmonica</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab29" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing kickball.html','Playing kickball')">
+            <label class="tab_class" for="tab29">Playing kickball</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab30" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing lacrosse.html','Playing lacrosse')">
+            <label class="tab_class" for="tab30">Playing lacrosse</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab31" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing piano.html','Playing piano')">
+            <label class="tab_class" for="tab31">Playing piano</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab32" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing polo.html','Playing polo')">
+            <label class="tab_class" for="tab32">Playing polo</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab33" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing racquetball.html','Playing racquetball')">
+            <label class="tab_class" for="tab33">Playing racquetball</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab34" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing saxophone.html','Playing saxophone')">
+            <label class="tab_class" for="tab34">Playing saxophone</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab35" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing squash.html','Playing squash')">
+            <label class="tab_class" for="tab35">Playing squash</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab36" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing violin.html','Playing violin')">
+            <label class="tab_class" for="tab36">Playing violin</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab37" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing volleyball.html','Playing volleyball')">
+            <label class="tab_class" for="tab37">Playing volleyball</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab38" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing water polo.html','Playing water polo')">
+            <label class="tab_class" for="tab38">Playing water polo</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab39" onclick="getHtml('pages_labeled_prototype_activityNet12/Pole vault.html','Pole vault')">
+            <label class="tab_class" for="tab39">Pole vault</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab40" onclick="getHtml('pages_labeled_prototype_activityNet12/Polishing forniture.html','Polishing forniture')">
+            <label class="tab_class" for="tab40">Polishing forniture</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab41" onclick="getHtml('pages_labeled_prototype_activityNet12/Polishing shoes.html','Polishing shoes')">
+            <label class="tab_class" for="tab41">Polishing shoes</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab42" onclick="getHtml('pages_labeled_prototype_activityNet12/Preparing pasta.html','Preparing pasta')">
+            <label class="tab_class" for="tab42">Preparing pasta</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab43" onclick="getHtml('pages_labeled_prototype_activityNet12/Preparing salad.html','Preparing salad')">
+            <label class="tab_class" for="tab43">Preparing salad</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab44" onclick="getHtml('pages_labeled_prototype_activityNet12/Putting on makeup.html','Putting on makeup')">
+            <label class="tab_class" for="tab44">Putting on makeup</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab45" onclick="getHtml('pages_labeled_prototype_activityNet12/Removing curlers.html','Removing curlers')">
+            <label class="tab_class" for="tab45">Removing curlers</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab46" onclick="getHtml('pages_labeled_prototype_activityNet12/Rock climbing.html','Rock climbing')">
+            <label class="tab_class" for="tab46">Rock climbing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab47" onclick="getHtml('pages_labeled_prototype_activityNet12/Sailing.html','Sailing')">
+            <label class="tab_class" for="tab47">Sailing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab48" onclick="getHtml('pages_labeled_prototype_activityNet12/Shaving.html','Shaving')">
+            <label class="tab_class" for="tab48">Shaving</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab49" onclick="getHtml('pages_labeled_prototype_activityNet12/Shaving legs.html','Shaving legs')">
+            <label class="tab_class" for="tab49">Shaving legs</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab50" onclick="getHtml('pages_labeled_prototype_activityNet12/Shot put.html','Shot put')">
+            <label class="tab_class" for="tab50">Shot put</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab51" onclick="getHtml('pages_labeled_prototype_activityNet12/Shoveling snow.html','Shoveling snow')">
+            <label class="tab_class" for="tab51">Shoveling snow</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab52" onclick="getHtml('pages_labeled_prototype_activityNet12/Smoking a cigarette.html','Smoking a cigarette')">
+            <label class="tab_class" for="tab52">Smoking a cigarette</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab53" onclick="getHtml('pages_labeled_prototype_activityNet12/Smoking hookah.html','Smoking hookah')">
+            <label class="tab_class" for="tab53">Smoking hookah</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab54" onclick="getHtml('pages_labeled_prototype_activityNet12/Snatch.html','Snatch')">
+            <label class="tab_class" for="tab54">Snatch</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab55" onclick="getHtml('pages_labeled_prototype_activityNet12/Spinning.html','Spinning')">
+            <label class="tab_class" for="tab55">Spinning</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab56" onclick="getHtml('pages_labeled_prototype_activityNet12/Springboard diving.html','Springboard diving')">
+            <label class="tab_class" for="tab56">Springboard diving</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab57" onclick="getHtml('pages_labeled_prototype_activityNet12/Starting a campfire.html','Starting a campfire')">
+            <label class="tab_class" for="tab57">Starting a campfire</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab58" onclick="getHtml('pages_labeled_prototype_activityNet12/Tai chi.html','Tai chi')">
+            <label class="tab_class" for="tab58">Tai chi</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab59" onclick="getHtml('pages_labeled_prototype_activityNet12/Tango.html','Tango')">
+            <label class="tab_class" for="tab59">Tango</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab60" onclick="getHtml('pages_labeled_prototype_activityNet12/Tennis serve with ball bouncing.html','Tennis serve with ball bouncing')">
+            <label class="tab_class" for="tab60">Tennis serve with ball bouncing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab61" onclick="getHtml('pages_labeled_prototype_activityNet12/Triple jump.html','Triple jump')">
+            <label class="tab_class" for="tab61">Triple jump</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab62" onclick="getHtml('pages_labeled_prototype_activityNet12/Tumbling.html','Tumbling')">
+            <label class="tab_class" for="tab62">Tumbling</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab63" onclick="getHtml('pages_labeled_prototype_activityNet12/Using parallel bars.html','Using parallel bars')">
+            <label class="tab_class" for="tab63">Using parallel bars</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab64" onclick="getHtml('pages_labeled_prototype_activityNet12/Using the balance beam.html','Using the balance beam')">
+            <label class="tab_class" for="tab64">Using the balance beam</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab65" onclick="getHtml('pages_labeled_prototype_activityNet12/Using the pommel horse.html','Using the pommel horse')">
+            <label class="tab_class" for="tab65">Using the pommel horse</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab66" onclick="getHtml('pages_labeled_prototype_activityNet12/Using uneven bars.html','Using uneven bars')">
+            <label class="tab_class" for="tab66">Using uneven bars</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab67" onclick="getHtml('pages_labeled_prototype_activityNet12/Vacuuming floor.html','Vacuuming floor')">
+            <label class="tab_class" for="tab67">Vacuuming floor</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab68" onclick="getHtml('pages_labeled_prototype_activityNet12/Walking the dog.html','Walking the dog')">
+            <label class="tab_class" for="tab68">Walking the dog</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab69" onclick="getHtml('pages_labeled_prototype_activityNet12/Washing dishes.html','Washing dishes')">
+            <label class="tab_class" for="tab69">Washing dishes</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab70" onclick="getHtml('pages_labeled_prototype_activityNet12/Washing face.html','Washing face')">
+            <label class="tab_class" for="tab70">Washing face</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab71" onclick="getHtml('pages_labeled_prototype_activityNet12/Washing hands.html','Washing hands')">
+            <label class="tab_class" for="tab71">Washing hands</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab72" onclick="getHtml('pages_labeled_prototype_activityNet12/Windsurfing.html','Windsurfing')">
+            <label class="tab_class" for="tab72">Windsurfing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab73" onclick="getHtml('pages_labeled_prototype_activityNet12/Wrapping presents.html','Wrapping presents')">
+            <label class="tab_class" for="tab73">Wrapping presents</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab74" onclick="getHtml('pages_labeled_prototype_activityNet12/Zumba.html','Zumba')">
+            <label class="tab_class" for="tab74">Zumba</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab75" onclick="getHtml('pages_labeled_prototype_activityNet12/Getting a tattoo.html','Getting a tattoo')">
+            <label class="tab_class" for="tab75">Getting a tattoo</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab76" onclick="getHtml('pages_labeled_prototype_activityNet12/Grooming horse.html','Grooming horse')">
+            <label class="tab_class" for="tab76">Grooming horse</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab77" onclick="getHtml('pages_labeled_prototype_activityNet12/Hammer throw.html','Hammer throw')">
+            <label class="tab_class" for="tab77">Hammer throw</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab78" onclick="getHtml('pages_labeled_prototype_activityNet12/Hand washing clothes.html','Hand washing clothes')">
+            <label class="tab_class" for="tab78">Hand washing clothes</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab79" onclick="getHtml('pages_labeled_prototype_activityNet12/High jump.html','High jump')">
+            <label class="tab_class" for="tab79">High jump</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab80" onclick="getHtml('pages_labeled_prototype_activityNet12/Hopscotch.html','Hopscotch')">
+            <label class="tab_class" for="tab80">Hopscotch</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab81" onclick="getHtml('pages_labeled_prototype_activityNet12/Horseback riding.html','Horseback riding')">
+            <label class="tab_class" for="tab81">Horseback riding</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab82" onclick="getHtml('pages_labeled_prototype_activityNet12/Ironing clothes.html','Ironing clothes')">
+            <label class="tab_class" for="tab82">Ironing clothes</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab83" onclick="getHtml('pages_labeled_prototype_activityNet12/Javelin throw.html','Javelin throw')">
+            <label class="tab_class" for="tab83">Javelin throw</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab84" onclick="getHtml('pages_labeled_prototype_activityNet12/Kayaking.html','Kayaking')">
+            <label class="tab_class" for="tab84">Kayaking</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab85" onclick="getHtml('pages_labeled_prototype_activityNet12/Layup drill in basketball.html','Layup drill in basketball')">
+            <label class="tab_class" for="tab85">Layup drill in basketball</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab86" onclick="getHtml('pages_labeled_prototype_activityNet12/Long jump.html','Long jump')">
+            <label class="tab_class" for="tab86">Long jump</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab87" onclick="getHtml('pages_labeled_prototype_activityNet12/Making a sandwich.html','Making a sandwich')">
+            <label class="tab_class" for="tab87">Making a sandwich</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab88" onclick="getHtml('pages_labeled_prototype_activityNet12/Mixing drinks.html','Mixing drinks')">
+            <label class="tab_class" for="tab88">Mixing drinks</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab89" onclick="getHtml('pages_labeled_prototype_activityNet12/Mowing the lawn.html','Mowing the lawn')">
+            <label class="tab_class" for="tab89">Mowing the lawn</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab90" onclick="getHtml('pages_labeled_prototype_activityNet12/Paintball.html','Paintball')">
+            <label class="tab_class" for="tab90">Paintball</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab91" onclick="getHtml('pages_labeled_prototype_activityNet12/Painting.html','Painting')">
+            <label class="tab_class" for="tab91">Painting</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab92" onclick="getHtml('pages_labeled_prototype_activityNet12/Ping-pong.html','Ping-pong')">
+            <label class="tab_class" for="tab92">Ping-pong</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab93" onclick="getHtml('pages_labeled_prototype_activityNet12/Plataform diving.html','Plataform diving')">
+            <label class="tab_class" for="tab93">Plataform diving</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab94" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing accordion.html','Playing accordion')">
+            <label class="tab_class" for="tab94">Playing accordion</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab95" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing badminton.html','Playing badminton')">
+            <label class="tab_class" for="tab95">Playing badminton</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab96" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing bagpipes.html','Playing bagpipes')">
+            <label class="tab_class" for="tab96">Playing bagpipes</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab97" onclick="getHtml('pages_labeled_prototype_activityNet12/Getting a piercing.html','Getting a piercing')">
+            <label class="tab_class" for="tab97">Getting a piercing</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab98" onclick="getHtml('pages_labeled_prototype_activityNet12/Playing field hockey.html','Playing field hockey')">
+            <label class="tab_class" for="tab98">Playing field hockey</label>
+            
+            <input type="radio" class="tab-switch" name="tab_name" id="tab99" onclick="getHtml('pages_labeled_prototype_activityNet12/Skateboarding.html','Skateboarding')">
+            <label class="tab_class" for="tab99">Skateboarding</label>
+            
+        </div>
+        
+        <div class="content_class" id="Archery"></div>
+        
+        <div class="content_class" id="Ballet"></div>
+        
+        <div class="content_class" id="Bathing dog"></div>
+        
+        <div class="content_class" id="Belly dance"></div>
+        
+        <div class="content_class" id="Breakdancing"></div>
+        
+        <div class="content_class" id="Brushing hair"></div>
+        
+        <div class="content_class" id="Brushing teeth"></div>
+        
+        <div class="content_class" id="Bungee jumping"></div>
+        
+        <div class="content_class" id="Cheerleading"></div>
+        
+        <div class="content_class" id="Chopping wood"></div>
+        
+        <div class="content_class" id="Clean and jerk"></div>
+        
+        <div class="content_class" id="Cleaning shoes"></div>
+        
+        <div class="content_class" id="Cleaning windows"></div>
+        
+        <div class="content_class" id="Cricket"></div>
+        
+        <div class="content_class" id="Cumbia"></div>
+        
+        <div class="content_class" id="Discus throw"></div>
+        
+        <div class="content_class" id="Dodgeball"></div>
+        
+        <div class="content_class" id="Doing karate"></div>
+        
+        <div class="content_class" id="Doing kickboxing"></div>
+        
+        <div class="content_class" id="Doing motocross"></div>
+        
+        <div class="content_class" id="Doing nails"></div>
+        
+        <div class="content_class" id="Doing step aerobics"></div>
+        
+        <div class="content_class" id="Drinking beer"></div>
+        
+        <div class="content_class" id="Drinking coffee"></div>
+        
+        <div class="content_class" id="Fixing bicycle"></div>
+        
+        <div class="content_class" id="Getting a haircut"></div>
+        
+        <div class="content_class" id="Playing flauta"></div>
+        
+        <div class="content_class" id="Playing guitarra"></div>
+        
+        <div class="content_class" id="Playing harmonica"></div>
+        
+        <div class="content_class" id="Playing kickball"></div>
+        
+        <div class="content_class" id="Playing lacrosse"></div>
+        
+        <div class="content_class" id="Playing piano"></div>
+        
+        <div class="content_class" id="Playing polo"></div>
+        
+        <div class="content_class" id="Playing racquetball"></div>
+        
+        <div class="content_class" id="Playing saxophone"></div>
+        
+        <div class="content_class" id="Playing squash"></div>
+        
+        <div class="content_class" id="Playing violin"></div>
+        
+        <div class="content_class" id="Playing volleyball"></div>
+        
+        <div class="content_class" id="Playing water polo"></div>
+        
+        <div class="content_class" id="Pole vault"></div>
+        
+        <div class="content_class" id="Polishing forniture"></div>
+        
+        <div class="content_class" id="Polishing shoes"></div>
+        
+        <div class="content_class" id="Preparing pasta"></div>
+        
+        <div class="content_class" id="Preparing salad"></div>
+        
+        <div class="content_class" id="Putting on makeup"></div>
+        
+        <div class="content_class" id="Removing curlers"></div>
+        
+        <div class="content_class" id="Rock climbing"></div>
+        
+        <div class="content_class" id="Sailing"></div>
+        
+        <div class="content_class" id="Shaving"></div>
+        
+        <div class="content_class" id="Shaving legs"></div>
+        
+        <div class="content_class" id="Shot put"></div>
+        
+        <div class="content_class" id="Shoveling snow"></div>
+        
+        <div class="content_class" id="Smoking a cigarette"></div>
+        
+        <div class="content_class" id="Smoking hookah"></div>
+        
+        <div class="content_class" id="Snatch"></div>
+        
+        <div class="content_class" id="Spinning"></div>
+        
+        <div class="content_class" id="Springboard diving"></div>
+        
+        <div class="content_class" id="Starting a campfire"></div>
+        
+        <div class="content_class" id="Tai chi"></div>
+        
+        <div class="content_class" id="Tango"></div>
+        
+        <div class="content_class" id="Tennis serve with ball bouncing"></div>
+        
+        <div class="content_class" id="Triple jump"></div>
+        
+        <div class="content_class" id="Tumbling"></div>
+        
+        <div class="content_class" id="Using parallel bars"></div>
+        
+        <div class="content_class" id="Using the balance beam"></div>
+        
+        <div class="content_class" id="Using the pommel horse"></div>
+        
+        <div class="content_class" id="Using uneven bars"></div>
+        
+        <div class="content_class" id="Vacuuming floor"></div>
+        
+        <div class="content_class" id="Walking the dog"></div>
+        
+        <div class="content_class" id="Washing dishes"></div>
+        
+        <div class="content_class" id="Washing face"></div>
+        
+        <div class="content_class" id="Washing hands"></div>
+        
+        <div class="content_class" id="Windsurfing"></div>
+        
+        <div class="content_class" id="Wrapping presents"></div>
+        
+        <div class="content_class" id="Zumba"></div>
+        
+        <div class="content_class" id="Getting a tattoo"></div>
+        
+        <div class="content_class" id="Grooming horse"></div>
+        
+        <div class="content_class" id="Hammer throw"></div>
+        
+        <div class="content_class" id="Hand washing clothes"></div>
+        
+        <div class="content_class" id="High jump"></div>
+        
+        <div class="content_class" id="Hopscotch"></div>
+        
+        <div class="content_class" id="Horseback riding"></div>
+        
+        <div class="content_class" id="Ironing clothes"></div>
+        
+        <div class="content_class" id="Javelin throw"></div>
+        
+        <div class="content_class" id="Kayaking"></div>
+        
+        <div class="content_class" id="Layup drill in basketball"></div>
+        
+        <div class="content_class" id="Long jump"></div>
+        
+        <div class="content_class" id="Making a sandwich"></div>
+        
+        <div class="content_class" id="Mixing drinks"></div>
+        
+        <div class="content_class" id="Mowing the lawn"></div>
+        
+        <div class="content_class" id="Paintball"></div>
+        
+        <div class="content_class" id="Painting"></div>
+        
+        <div class="content_class" id="Ping-pong"></div>
+        
+        <div class="content_class" id="Plataform diving"></div>
+        
+        <div class="content_class" id="Playing accordion"></div>
+        
+        <div class="content_class" id="Playing badminton"></div>
+        
+        <div class="content_class" id="Playing bagpipes"></div>
+        
+        <div class="content_class" id="Getting a piercing"></div>
+        
+        <div class="content_class" id="Playing field hockey"></div>
+        
+        <div class="content_class" id="Skateboarding"></div>
+        
+        <script>
+            function　getHtml(str1, str2) {
+              var elements = document.getElementsByClassName('content_class');
+              for(i=0;i<elements.length;i++){
+                elements[i].style.display = 'none';
+              }
+              var xhr = new XMLHttpRequest(),
+              method = "GET",
+              url = str1;//読み込まれるHTMLを指定
+              var box=document.getElementById(str2);//読み込みたい位置を指定
+              box.style.display = 'block';
+            
+              xhr.open(method, url, true);
+              xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                  var restxt=xhr.responseText;//String型で取得
+                  box.innerHTML=restxt;//完了
+                }
+              };
+              xhr.send();
+              
+            };
+        </script>
+    </body>
+</html>
